@@ -7,6 +7,10 @@
 #include <bits/stdc++.h> 
 #define SIZE 1000000
 
+// problem:
+// given a list of integers and a number k
+// find if there are any 2 numbers that add up to k
+
 bool pair_exists_vec(int k, std::vector<int> array);
 bool pair_exists_set(int k,std::vector<int>array);
 std::vector<int> generate_random_array(int size);
