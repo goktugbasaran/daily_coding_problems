@@ -2,9 +2,11 @@
 #include <string>
 #include <stack>
 #include <queue>
+#include <vector>
 #include <bits/stdc++.h> 
 #include <boost/algorithm/string.hpp> 
-using namespace std;
+
+
 
 // problem:
 // given a binary tree
@@ -41,13 +43,13 @@ int main(){
 }
 
 Node* deserialize(std::string serialized){
-    vector<std::string> result;
+    std::vector<std::string> result;
     boost::split(result,serialized, boost::is_any_of("-"));
     
     Node* root = new Node(result[0]);
     reverse(result.begin(),result.end());
     result.pop_back();
-    queue<Node*> q;
+    std::queue<Node*> q;
     Node* current = root;
     while(!result.empty()){
 
@@ -76,7 +78,7 @@ Node* deserialize(std::string serialized){
 }
 
 std::string serialize(Node* root){
-    queue<Node*> q; 
+    std::queue<Node*> q; 
     q.push(root);
     std::string serialized = "";
     while(!q.empty()){
