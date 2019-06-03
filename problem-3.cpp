@@ -17,10 +17,10 @@ using namespace std;
 
 class Node{
     public:
-        string val;
+        std::string val;
         Node* left;
         Node* right;
-        Node(string val,Node* left = NULL,Node* right = NULL){
+        Node(std::string val,Node* left = NULL,Node* right = NULL){
             this->val = val;
             this->left = left;
             this->right = right;
@@ -28,9 +28,9 @@ class Node{
 };
 
 // O(n) where n is the node number;
-string serialize(Node* root);
+std::string serialize(Node* root);
 // O(n) assuming reverse and split takes O(n)
-Node* deserialize(string serialized);
+Node* deserialize(std::string serialized);
 
 int main(){
     Node* root = new Node("root",new Node("left",new Node("left.left")),new Node("right"));
@@ -40,8 +40,8 @@ int main(){
     return 0;
 }
 
-Node* deserialize(string serialized){
-    vector<string> result;
+Node* deserialize(std::string serialized){
+    vector<std::string> result;
     boost::split(result,serialized, boost::is_any_of("-"));
     
     Node* root = new Node(result[0]);
@@ -75,10 +75,10 @@ Node* deserialize(string serialized){
     return root;
 }
 
-string serialize(Node* root){
+std::string serialize(Node* root){
     queue<Node*> q; 
     q.push(root);
-    string serialized = "";
+    std::string serialized = "";
     while(!q.empty()){
         Node* current = q.front();
         if(current == NULL){
