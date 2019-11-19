@@ -2,9 +2,11 @@ from __future__ import division
 import time
 import threading
 from random import randint
+import heapq
 
 
 def current_milli_time(): return int(round(time.time() * 1000))
+
 
 """
 This problem was asked by Apple.
@@ -28,11 +30,16 @@ class Job:
         self.delay = delay
         self.start = delay + current_milli_time()
 
+    # For heap push operation, it was necessary to override < operator for comparisons.
+    def __lt__(self, other):
+        return self.start < other.start
+
 
 class JobList:
     def __init__(self):
         self.jobs = []
 
+    # O(N) since it is a sorted list. Worst case is the added element having the minimum delay.
     def add(self, job):
         for i in range(0, len(self.jobs)):
             if(job.start > jobs[i].start):
@@ -41,7 +48,7 @@ class JobList:
         self.jobs.append(job)
 
     def pop(self):
-        return self.jobs.pop(len(self.jobs)-1)
+        return self.jobs.pop()
 
     def __len__(self):
         return len(self.jobs)
@@ -50,22 +57,49 @@ class JobList:
         return self.jobs[index]
 
 
-def update(name):
+def updateListVer(name):
     while(True):
         global jobs
         if(len(jobs) != 0):
-            if(jobs[len(jobs) - 1].start <= current_milli_time()):
-                job = jobs.pop()
+            if(jobs[-1].start <= current_milli_time()):
+                job = jobs.pop() # O(1) since it is the last element of the list.
                 job.fun(job.args)
 
 
-if __name__ == "__main__":
+def updateHeapVer(name):
+    while(True):
+        global jobs
+        if(len(jobs) != 0):
+            if(jobs[0].start <= current_milli_time()):
+                job = heapq.heappop(jobs)  # Heappop O(log(N))
+                job.fun(job.args)
+
+
+def listVersion():
     global jobs
     jobs = JobList()
-    x = threading.Thread(target=update, args=(1,))
+    x = threading.Thread(target=updateListVer, args=(1,))
     x.start()
 
     # generate 1000 functions with 1 to 15 seconds delay.
     for i in range(0, 1000):
         delay = randint(1000, 15000)
+        # List insert : O(N)
         jobs.add(Job(print, "Job {}\t{}".format(i, delay), delay))
+
+
+def heapVersion():
+    global jobs
+    jobs = []
+    heapq.heapify(jobs)
+    x = threading.Thread(target=updateHeapVer, args=(1,))
+    x.start()
+
+    for i in range(0, 1000):
+        delay = randint(1000, 15000)
+        heapq.heappush(
+            jobs, Job(print, "Job ID:{}\tDelay:{}".format(i, delay), delay))  # Heap push : O(log(N))
+
+
+if __name__ == "__main__":
+    heapVersion()
