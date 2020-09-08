@@ -8,13 +8,6 @@ Estimate π to 3 decimal places using a Monte Carlo method.
 Hint: The basic equation of a circle is x2 + y2 = r2.
 """	
 
-"""
-Basic idea is that, pick random points in the unit square that covers
-the unit circle, ratio the points that fall inside the circle to the 
-total amount of points. 
-If the picked point number increases, accuracy tend to increase.
-If the radius of the circle increases, accuracy tend to increase.
-"""
 from random import randrange,seed,randint
 seed(1)
 
@@ -30,7 +23,7 @@ def estimatePi(r,N):
 	return 4*(inside/N)
 
 R = [1,10,100,1000]
-N = [10,100,1000,10000,100000,1000000]
+N = [10,100,1000,10000,100000,1000000]problem_number
 for n in N:
 	for r in R:
 		seed(randint(1,7))

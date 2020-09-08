@@ -1,13 +1,3 @@
-from __future__ import division
-import time
-import threading
-from random import randint
-import heapq
-
-
-def current_milli_time(): return int(round(time.time() * 1000))
-
-
 """
 This problem was asked by Apple.
 
@@ -19,9 +9,15 @@ but it is to have a queue of functions that come in different millisecond offset
 I implemented 2 classes to represent a Job(function), which has a delay and the function to be executed as a data member.
 a JobList, to keep the jobs in a ascended queue. When a new job arrives, it is "inserted" to its correct place. O(n)
 And a thread module that checks the last element of the queue, which is the most urgent function. 
-Python 3
 """
 
+from __future__ import division
+import time
+import threading
+from random import randint
+import heapq
+
+def current_milli_time(): return int(round(time.time() * 1000))
 
 class Job:
     def __init__(self, fun, args, delay):

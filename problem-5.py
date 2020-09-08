@@ -1,4 +1,6 @@
-'''
+"""
+This problem was asked by Jane Street.
+
 cons(a, b) constructs a pair, and car(pair) and cdr(pair) 
 returns the first and last element of that pair. 
 For example, car(cons(3, 4)) returns 3, and 
@@ -11,10 +13,7 @@ def cons(a, b):
         return f(a, b)
     return pair
 Implement car and cdr.
-
-'''
-
-# This problem is about functional programming.
+"""
 
 def cons(a, b):
     def pair(f):
