@@ -1,8 +1,7 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <chrono>
+//
 /*
+This problem was asked by Facebook.
+
 Given the mapping a = 1, b = 2, ... z = 26, 
 and an encoded message, 
 count the number of ways it can be decoded.
@@ -16,8 +15,13 @@ My solution is not really time efficient.
 For input size of 10, it takes around 25 miliseconds,
 For input size of 20, it takes around 2500 miliseconds,
 For input size of 30, it takes around 250000 miliseconds,
-
 */
+//
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <chrono>
 
 std::string generateInput(int len);
 int findCombinations(std::string input);

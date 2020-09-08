@@ -1,16 +1,19 @@
+//
+/*
+This problem was asked by Uber.
+
+Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
+
+For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
+
+Follow-up: what if you can't use division?
+*/
+//
+
 #include <iostream>
 #include <ctime>
 #include <vector>
-#include <bits/stdc++.h> 
-
-// problem:
-// given an integer unsorted array of size k
-// return an array that contains at index i the multiple
-// of the numbers other than the i'th number in the original array
-// ex. arr ={1,2,3,4}
-// ret = {24,12,8,6}
-// With divison allowed
-// With division not allowed.
+#include <bits/stdc++.h>
 
 std::vector<int> generate_random_array(int size);
 

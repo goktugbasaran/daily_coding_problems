@@ -1,3 +1,13 @@
+//
+/*
+This problem was asked by Google.
+Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes the string back into the tree.
+
+following test should pass:
+assert deserialize(serialize(root))->left->left->val == 'left.left'
+*/
+//
+
 #include <iostream>
 #include <string>
 #include <stack>
@@ -5,17 +15,6 @@
 #include <vector>
 #include <bits/stdc++.h> 
 #include <boost/algorithm/string.hpp> 
-
-
-
-// problem:
-// given a binary tree
-// implement a serializer which serializes the tree into a string
-// also, implement a deserializer which turns a string back into a binary tree.
-
-// following test should pass:
-// assert deserialize(serialize(root))->left->left->val == 'left.left'
-
 
 class Node{
     public:
@@ -29,9 +28,9 @@ class Node{
         }
 };
 
-// O(n) where n is the node number;
+/* O(n) where n is the node number; */
 std::string serialize(Node* root);
-// O(n) assuming reverse and split takes O(n)
+/* O(n) assuming reverse and split takes O(n) */
 Node* deserialize(std::string serialized);
 
 int main(){

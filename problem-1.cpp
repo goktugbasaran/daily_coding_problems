@@ -1,3 +1,15 @@
+//
+/*
+This problem was recently asked by Google.
+
+Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+
+For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
+
+Bonus: Can you do this in one pass?
+*/
+//
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -6,10 +18,6 @@
 #include <algorithm>
 #include <bits/stdc++.h> 
 #define SIZE 1000000
-
-// problem:
-// given a list of integers and a number k
-// find if there are any 2 numbers that add up to k
 
 bool pair_exists_vec(int k, std::vector<int> array);
 bool pair_exists_set(int k,std::vector<int>array);
@@ -20,22 +28,17 @@ int main(){
 
     std::vector<int> array = generate_random_array(SIZE);
 
-    /********************************************************************************************/
     std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
     pair_exists_set(k,array);
     std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
     std::cout << "Set: " << duration << std::endl;
-    /********************************************************************************************/
-
-    /********************************************************************************************/
+   
     t1 = std::chrono::high_resolution_clock::now();
     pair_exists_vec(k,array);
     t2 = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
     std::cout << "Vec: " << duration << std::endl;
-    /********************************************************************************************/
-
 
     return 0;
 }

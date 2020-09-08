@@ -1,15 +1,20 @@
+//
+/*
+This problem was asked by Stripe.
+
+Given an array of integers, find the first missing positive integer in linear time and constant space. 
+In other words, find the lowest positive integer that does not exist in the array. The array can contain
+duplicates and negative numbers as well.
+
+For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
+
+You can modify the input array in-place.
+*/
+//
+
 #include <iostream>
 #include <vector>
 #include <chrono>
-
-
-// problem:
-// given an array of integers, find the *first* *positive* integer that is missing.
-// eg: [3,2,4,-2,-3,-5,-1]
-// sorted = [-5,-3,-2,-1,2,3,4]
-// 1 is missing
-// eg: [1,2,0]
-// 3 is missing.    
 
 std::vector<int> generate_random_array(int size);
 void print_vector(std::vector<int> &vec);
@@ -18,7 +23,7 @@ int linearTime_linearSpace(std::vector<int> input);
 int main(){
 
 
-    std::vector<int> input;// = generate_random_array(1000);
+    std::vector<int> input;
     
     input.push_back(1);
     input.push_back(2);
@@ -35,21 +40,17 @@ int main(){
     return 0;
 }
 
-
 int linearTime_linearSpace(std::vector<int> input){
 
-    // O(n) time
     int maxPositive = 0;
     for (int num :input){
         if(num>0 && num>maxPositive) maxPositive=num;
     }
 
-    // O(n-x) space == O(n) 
     int array[maxPositive];
     for(int num: input){
         array[num] = 1;
     }
-    // O(n) time
     for(int i = 0;i<maxPositive;i++){
         if(array[i] - array[i+1] == 1){
             return i+1;
@@ -58,7 +59,6 @@ int linearTime_linearSpace(std::vector<int> input){
             return i;
         }
     }
-    // if not found until the end of the list, it means the maxNumber+1 is missing
     return maxPositive+1;
  }
 
