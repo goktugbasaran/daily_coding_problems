@@ -2,13 +2,6 @@
 This problem was asked by Apple.
 
 Implement a job scheduler which takes in a function f and an integer n, and calls f after n milliseconds.
-
-
-The problem seems simple at first, but the actual objective is not to be able to run a single function with sleep
-but it is to have a queue of functions that come in different millisecond offsets.
-I implemented 2 classes to represent a Job(function), which has a delay and the function to be executed as a data member.
-a JobList, to keep the jobs in a ascended queue. When a new job arrives, it is "inserted" to its correct place. O(n)
-And a thread module that checks the last element of the queue, which is the most urgent function. 
 """
 
 from __future__ import division

@@ -8,13 +8,6 @@ count the number of ways it can be decoded.
 
 For example, the message '111' would give 3, 
 since it could be decoded as 'aaa', 'ka', and 'ak'.
-
-
-My solution is not really time efficient.
-
-For input size of 10, it takes around 25 miliseconds,
-For input size of 20, it takes around 2500 miliseconds,
-For input size of 30, it takes around 250000 miliseconds,
 */
 //
 
